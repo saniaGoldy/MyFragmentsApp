@@ -1,5 +1,6 @@
 package com.example.myfragmentsapp.ui.main
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -11,5 +12,13 @@ class ColourViewModel : ViewModel() {
 
     fun getColour(): MutableLiveData<Boolean> {
         return currentColour
+    }
+
+    val userInput: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
+
+    fun getInput(): MutableLiveData<String>{
+        return userInput
     }
 }
