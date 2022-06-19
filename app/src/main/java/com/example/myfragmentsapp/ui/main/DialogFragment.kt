@@ -1,10 +1,8 @@
 package com.example.myfragmentsapp.ui.main
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.KeyListener
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -85,6 +83,8 @@ class DialogFragment : DialogFragment() {
         }
         return view
     }
+
+
     companion object {
         const val TAG = "FDialog"
     }
