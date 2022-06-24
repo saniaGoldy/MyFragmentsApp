@@ -32,56 +32,58 @@ class DialogFragment : DialogFragment() {
                 Log.d(TAG, "cancelDialogButton clicked")
                 this@DialogFragment.dismiss()
             }
-            val createButt = findViewById<Button>(R.id.confirm_button)
+            val createButton = findViewById<Button>(R.id.confirm_button)
 
-            editText = findViewById<EditText>(R.id.dialogEditText).also{
-                it.addTextChangedListener(object : TextWatcher {
-                    override fun beforeTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        count: Int,
-                        after: Int
-                    ) {
-                        Log.d(TAG, "beforeTextChanged: ")
-
-                    }
-
-                    override fun onTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        before: Int,
-                        count: Int
-                    ) {
-                        Log.d(TAG, "onTextChanged: ")
-
-                    }
-
-                    override fun afterTextChanged(s: Editable?) {
-                        Log.d(TAG, "afterTextChanged: $s")
-                        if (s != null) {
-                            if (s.length > 3) {
-                                createButt.isClickable = true
-                            } else {
-                                createButt.isClickable = false
-                                Toast.makeText(
-                                    requireContext(),
-                                    "input more than three characters",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            currText = s.toString()
-                        }
-                    }
-
-                })
+            editText = findViewById<EditText>(R.id.dialogEditText).also {
+                it.addTextChangedListener(getTextWatcher(createButton))
             }
 
-            createButt.setOnClickListener {
+            createButton.setOnClickListener {
                 model.userInput.value = currText
                 this@DialogFragment.dismiss()
             }
         }
         return view
+    }
+
+    private fun getTextWatcher(createButton: Button) = object : TextWatcher {
+        override fun beforeTextChanged(
+            s: CharSequence?,
+            start: Int,
+            count: Int,
+            after: Int
+        ) {
+            Log.d(TAG, "beforeTextChanged: ")
+
+        }
+
+        override fun onTextChanged(
+            s: CharSequence?,
+            start: Int,
+            before: Int,
+            count: Int
+        ) {
+            Log.d(TAG, "onTextChanged: ")
+
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+            Log.d(TAG, "afterTextChanged: $s")
+            if (s != null) {
+                if (s.length > 3) {
+                    createButton.isClickable = true
+                } else {
+                    createButton.isClickable = false
+                    Toast.makeText(
+                        requireContext(),
+                        "input more than three characters",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                currText = s.toString()
+            }
+        }
+
     }
 
 

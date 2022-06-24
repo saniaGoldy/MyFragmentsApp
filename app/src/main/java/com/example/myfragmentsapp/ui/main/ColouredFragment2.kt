@@ -14,7 +14,6 @@ import androidx.lifecycle.Observer
 import com.example.myfragmentsapp.R
 import com.example.myfragmentsapp.TAG
 
-
 class ColouredFragment2 : Fragment() {
     private var blackColourDisplayed = false
     private val model: ColourViewModel by activityViewModels()
@@ -27,8 +26,8 @@ class ColouredFragment2 : Fragment() {
             blackColourDisplayed = it
             changeColour()
         }
-        val inputObserver = Observer<String>{
-            this.view?.apply { findViewById<TextView>(R.id.fragment2_text).text = it}
+        val inputObserver = Observer<String> {
+            this.view?.apply { findViewById<TextView>(R.id.fragment2_text).text = it }
         }
 
         model.userInput.observe(this, inputObserver)
@@ -42,7 +41,7 @@ class ColouredFragment2 : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_coloured2, container, false)
         val dialog = childFragmentManager.findFragmentByTag(DialogFragment.TAG)
-        if (dialog == null){
+        if (dialog == null) {
             DialogFragment().show(childFragmentManager, DialogFragment.TAG)
         }
         return view
