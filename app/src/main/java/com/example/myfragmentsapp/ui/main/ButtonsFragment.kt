@@ -46,5 +46,4 @@ class ButtonsFragment : Fragment() {
             return view
         }
     }
-
 }

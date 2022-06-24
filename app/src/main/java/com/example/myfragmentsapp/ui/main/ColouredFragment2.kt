@@ -6,13 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.myfragmentsapp.R
 import com.example.myfragmentsapp.TAG
-
 
 class ColouredFragment2 : Fragment() {
     private var blackColourDisplayed = false
@@ -26,7 +26,11 @@ class ColouredFragment2 : Fragment() {
             blackColourDisplayed = it
             changeColour()
         }
+        val inputObserver = Observer<String> {
+            this.view?.apply { findViewById<TextView>(R.id.fragment2_text).text = it }
+        }
 
+        model.userInput.observe(this, inputObserver)
         model.currentColour.observe(this, colourObserver)
     }
 
@@ -35,7 +39,12 @@ class ColouredFragment2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_coloured2, container, false)
+        val view = inflater.inflate(R.layout.fragment_coloured2, container, false)
+        val dialog = childFragmentManager.findFragmentByTag(DialogFragment.TAG)
+        if (dialog == null) {
+            DialogFragment().show(childFragmentManager, DialogFragment.TAG)
+        }
+        return view
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

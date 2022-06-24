@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer
 import com.example.myfragmentsapp.R
 import com.example.myfragmentsapp.TAG
 
-
 class ColouredFragment1 : Fragment() {
     private var yellowColourDisplayed = false
     private val model: ColourViewModel by activityViewModels()
@@ -22,7 +21,7 @@ class ColouredFragment1 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val colourObserver = Observer<Boolean>{
+        val colourObserver = Observer<Boolean> {
             yellowColourDisplayed = it
             changeColour()
         }
@@ -39,18 +38,19 @@ class ColouredFragment1 : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun changeColour(){
+    private fun changeColour() {
         Log.d(TAG, "changeColour: Fragment1")
         this.view?.apply {
             yellowColourDisplayed = if (yellowColourDisplayed) {
                 setBackgroundColor(resources.getColor(R.color.yellow, null))
                 false
-            }  else{
+            } else {
                 setBackgroundColor(resources.getColor(R.color.blue, null))
                 true
             }
         }
     }
+
     companion object {
         @JvmStatic
         fun newInstance() =

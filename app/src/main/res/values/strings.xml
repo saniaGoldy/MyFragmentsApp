@@ -5,4 +5,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="coloured_fragment_1">coloured fragment 1</string>
     <string name="coloured_fragment_2">coloured_fragment_2</string>
+    <string name="dialog_title">Create a list</string>
+    <string name="ok">create</string>
+    <string name="alphanumericCharacters">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</string>
+    <string name="enter_message_hint">Please enter the message</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="ConfirmButton">Create</string>
+    <string name="title">Create a list</string>
 </resources>
